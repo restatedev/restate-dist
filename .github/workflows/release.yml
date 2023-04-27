@@ -1,0 +1,26 @@
+name: Create new release
+
+on:
+  workflow_dispatch:
+    inputs:
+      restateVersion:
+        description: "Restate version"
+        required: true
+        type: string
+
+jobs:
+  publish-release:
+    name: Publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verify Restate release exists
+        uses: cardinalby/git-get-release-action@v1
+        id: restate-release
+        env:
+            GITHUB_TOKEN: ${{ secrets.REPO_READ_ACCESS }}
+        with:
+          repo: restatedev/restate
+          draft: false
+          prerelease: false
+          tag: ${{ inputs.restateVersion }}
