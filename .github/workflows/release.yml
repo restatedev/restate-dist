@@ -45,3 +45,24 @@ jobs:
           tag: ${{ inputs.restateVersion }}
           message: Restate distribution release ${{ inputs.restateVersion }}
           add: ./docker/Dockerfile
+
+  build-docker-image:
+    name: Build docker image
+    needs: [prepare-release]
+    uses: restatedev/restate/.github/workflows/docker.yml@issue#347
+    secrets: inherit
+    with:
+      ref: ${{ inputs.restateVersion }}
+
+  publish-release:
+    name: Publish release
+    needs: [build-docker-image]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          # create a draft release which needs manual approval
+          draft: true
+          tag_name: ${{ inputs.restateVersion }}
