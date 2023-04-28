@@ -1,68 +1,37 @@
 name: Create new release
 
 on:
-  workflow_dispatch:
-    inputs:
-      restateVersion:
-        description: "Restate version"
-        required: true
-        type: string
+  push:
+    tags:
+      - v**
 
 jobs:
-  prepare-release:
-    name: Prepare release
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Verify Restate release exists
-        uses: cardinalby/git-get-release-action@v1
-        id: restate-release
-        env:
-            GITHUB_TOKEN: ${{ secrets.REPO_READ_ACCESS }}
-        with:
-          repo: restatedev/restate
-          draft: false
-          prerelease: false
-          tag: ${{ inputs.restateVersion }}
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Update Dockerfile to point to new release
-        run: |
-          release_tag=${{ inputs.restateVersion }}
-          if [[ ${release_tag} = v* ]]; then
-            # remove v character
-            release_tag="${release_tag:1}"
-          fi
-          sed -i "s/FROM ghcr.io\/restatedev\/restate:.*$/FROM ghcr.io\/restatedev\/restate:${release_tag}/g" docker/Dockerfile
-          cat docker/Dockerfile
-
-      - name: Commit updated Dockerfile and tag release
-        uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
-          tag: ${{ inputs.restateVersion }}
-          message: Restate distribution release ${{ inputs.restateVersion }}
-          add: ./docker/Dockerfile
-
-  build-docker-image:
-    name: Build docker image
-    needs: [prepare-release]
-    uses: restatedev/restate/.github/workflows/docker.yml@issue#347
-    secrets: inherit
-    with:
-      ref: ${{ inputs.restateVersion }}
-
   publish-release:
     name: Publish release
-    needs: [build-docker-image]
     runs-on: ubuntu-latest
 
     steps:
+      - name: Fetch release artifacts from ${{ github.ref_name }}
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "restatedev/restate"
+          tag: "${{ github.ref_name }}"
+          fileName: "restate-cli-*.zip"
+          token: ${{ secrets.REPO_READ_ACCESS }}
+
+      - name: List artifacts
+        id: list-artifacts
+        run: |
+          # check whether we have fetched some artifacts
+          if ls restate-cli-*.zip >/dev/null 2>&1; then
+            echo "ARTIFACTS<<EOF" >> $GITHUB_OUTPUT
+            ls -1 restate-cli-*.zip >> $GITHUB_OUTPUT || true
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
           # create a draft release which needs manual approval
           draft: true
-          tag_name: ${{ inputs.restateVersion }}
+          files: ${{ steps.list-artifacts.outputs.ARTIFACTS }}
