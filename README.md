@@ -8,13 +8,13 @@ This will allow you to access the Github package registry.
 In order to [log into ghcr.io](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic) you need the previously generated PAT.
 
 ```bash
-$ echo $PAT | docker login ghcr.io -u USERNAME --password-stdin
+echo $PAT | docker login ghcr.io -u USERNAME --password-stdin
 ```
 
 From now on, you can fetch the latest Restate distribution via:
 
 ```bash
-$ docker pull ghcr.io/restatedev/restate-dist:latest
+docker pull ghcr.io/restatedev/restate-dist:latest
 ```
 
 ## NPM registry
@@ -22,8 +22,12 @@ $ docker pull ghcr.io/restatedev/restate-dist:latest
 In order to [log into Github's npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token) you need your username and PAT.
 
 ```bash
-$ npm login --scope=restatedev --auth-type=legacy --registry=https://npm.pkg.github.com
+npm login --scope=restatedev --auth-type=legacy --registry=https://npm.pkg.github.com
+```
 
+This will ask for your username and password:
+
+```bash
 > Username: USERNAME
 > Password: PAT
 ```
