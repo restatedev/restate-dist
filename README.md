@@ -1,7 +1,7 @@
-# Welcome to Restate; the easy way of building modern distributed applications
+# Welcome to Restate
 
-In order to get started, you first have to [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) (PAT) with `read:packages` permissions.
-This will allow you to access the Github package registry.
+In order to get started, you first have to [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) (PAT) with `read:packages` permission.
+This will allow you to access all of Restate's packages.
 
 ## Container registry
 
@@ -32,12 +32,13 @@ This will ask for your username and password:
 > Password: PAT
 ```
 
-After you have logged in, you can fetch the latest npm packages from the `@restatedev`.
+After you have logged in, you can fetch the latest npm packages from `@restatedev`.
 
 # Exploring Restate
 
 Check out the following resources for learning more about Restate
 
+* [Documentation](https://github.com/restatedev/documentation) to learn more about Restate
 * [Typescript SDK](https://github.com/restatedev/sdk-typescript) to develop Typescript services with Restate
 * [Node template](https://github.com/restatedev/node-template) project to develop your own Typescript services
 * [Shopping cart example](https://github.com/restatedev/example-shopping-cart-typescript) which demonstrates how to build a web application with Restate
