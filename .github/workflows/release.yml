@@ -17,7 +17,7 @@ jobs:
           repository: "restatedev/restate"
           tag: "${{ github.ref_name }}"
           fileName: "restate-cli-*.zip"
-          token: ${{ secrets.REPO_READ_ACCESS }}
+          token: ${{ secrets.RESTATE_READ_ACCESS }}
 
       - name: List artifacts
         id: list-artifacts

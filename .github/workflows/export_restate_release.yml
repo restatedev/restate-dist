@@ -18,7 +18,7 @@ jobs:
         uses: cardinalby/git-get-release-action@v1
         id: restate-release
         env:
-            GITHUB_TOKEN: ${{ secrets.REPO_READ_ACCESS }}
+            GITHUB_TOKEN: ${{ secrets.RESTATE_READ_ACCESS }}
         with:
           repo: restatedev/restate
           draft: false
@@ -28,7 +28,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.REPO_READ_ACCESS }}
+          # Cannot use secrets.GITHUB_TOKEN because other workflows would not be triggered by generated tags.
+          # See https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow
+          token: ${{ secrets.RESTATE_DIST_WRITE_ACCESS }}
 
       - name: Update Dockerfile to point to new release
         run: |
