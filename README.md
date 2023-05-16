@@ -40,7 +40,7 @@ Check out the following resources for learning more about Restate
 
 * [Documentation](https://github.com/restatedev/documentation) to learn more about Restate.
 * [Typescript SDK](https://github.com/restatedev/sdk-typescript) to develop Typescript services with Restate.
-* [Node template](https://github.com/restatedev/node-template) project to develop your own Typescript services.
+* [Node template generator](https://github.com/restatedev/node-template-generator) project to develop your own Typescript services.
 * [Shopping cart example](https://github.com/restatedev/example-shopping-cart-typescript) which demonstrates how to build a web application with Restate.
 * [Lambda deployment example](https://github.com/restatedev/example-lambda-ts-greeter) which demonstrates how to deploy your services on [AWS Lambda](https://aws.amazon.com/de/lambda/).
 * [Ticket reservation system](https://github.com/restatedev/example-ticket-reservation-system) which illustrate how Restate's keyed-sharding and concurrency guarantees simplify microservice architectures.
