@@ -11,4 +11,4 @@ The release workflow will create a draft release with all `restate-cli-*.zip` as
 
 In order to finish the release, you have to go the release page and publish the release draft.
 
-If you don't want to automatically export the Restate release via the export Restate release workflow, then you can manually update the `Dockerfile` to point to the correct Restate container image and create then push a tag of the form `vX.Y.Z`. This will build the Docker image as well as creating a draft release for this tag.
+If you don't want to automatically export the Restate release via the export Restate release workflow, then you can manually update the `Dockerfile` to point to the correct Restate container image and then push a tag of the form `vX.Y.Z`. This will build the Docker image as well as creating a draft release for this tag.
