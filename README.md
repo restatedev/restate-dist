@@ -1,11 +1,23 @@
 # Welcome to Restate
 
-In order to get started, you first have to [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) (PAT) with `read:packages` permission.
+Restate is a system for easily building resilient applications using **distributed durable RPC & async/await**.
+
+This repository shows you how to get access to the Restate runtime Docker image and the Restate npm packages (e.g. Restate's Typescript SDK).
+
+❓ Learn more about Restate from the [Restate documentation](https://github.com/restatedev/documentation).
+
+## Prerequisites
+- [NodeJS (and npm)](https://nodejs.org) installed.
+- [Docker Engine](https://docs.docker.com/engine/install/) to launch the Restate runtime (not needed for the app implementation itself).
+- A GitHub account
+
+## Creating a personal access token
+To get started, you first have to [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) (PAT) on GitHub with `read:packages` permission.
 This will allow you to access all of Restate's packages.
 
-## Container registry
+## Setting up access to the Restate Docker image
 
-In order to [log into ghcr.io](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic) you need the previously generated PAT.
+To [log into ghcr.io](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic) you need the previously generated PAT.
 
 ```bash
 echo $PAT | docker login ghcr.io -u USERNAME --password-stdin
@@ -17,9 +29,9 @@ From now on, you can fetch the latest Restate distribution via:
 docker pull ghcr.io/restatedev/restate-dist:latest
 ```
 
-## NPM registry
+## Setting up access to Restate npm packages
 
-In order to [log into Github's npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token) you need your username and PAT.
+To [log into GitHub's npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token) you need your username and PAT.
 
 ```bash
 npm login --scope=restatedev --auth-type=legacy --registry=https://npm.pkg.github.com
