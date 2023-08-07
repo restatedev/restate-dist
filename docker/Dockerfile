@@ -1,1 +1,1 @@
-FROM ghcr.io/restatedev/restate:0.1.6
+FROM ghcr.io/restatedev/restate:0.1.7
