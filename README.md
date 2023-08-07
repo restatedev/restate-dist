@@ -55,4 +55,5 @@ Check out the following resources for learning more about Restate
 * [Node template generator](https://github.com/restatedev/node-template-generator) project to develop your own Typescript services.
 * [Shopping cart example](https://github.com/restatedev/example-shopping-cart-typescript) which demonstrates how to build a web application with Restate.
 * [Lambda deployment example](https://github.com/restatedev/example-lambda-ts-greeter) which demonstrates how to deploy your services on [AWS Lambda](https://aws.amazon.com/de/lambda/).
-* [Ticket reservation system](https://github.com/restatedev/example-ticket-reservation-system) which illustrate how Restate's keyed-sharding and concurrency guarantees simplify microservice architectures.
+* [Ticket reservation system](https://github.com/restatedev/example-ticket-reservation-system) which demonstrates how Restate's keyed-sharding and concurrency guarantees simplify microservice architectures.
+* [Food ordering example](https://github.com/restatedev/example-food-ordering) which demonstrates how Restate's awakeables can be used to integrate with an external service.
