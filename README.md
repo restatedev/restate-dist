@@ -2,12 +2,11 @@
 
 Restate is a system for easily building resilient applications using **distributed durable RPC & async/await**.
 
-This repository shows you how to get access to the Restate runtime Docker image and the Restate npm packages (e.g. Restate's Typescript SDK).
+This repository shows you how to get access to the Restate runtime Docker image
 
 ❓ Learn more about Restate from the [Restate documentation](https://docs.restate.dev).
 
 ## Prerequisites
-- [NodeJS (and npm)](https://nodejs.org) installed.
 - [Docker Engine](https://docs.docker.com/engine/install/) to launch the Restate runtime (not needed for the app implementation itself).
 - A GitHub account
 
@@ -28,23 +27,6 @@ From now on, you can fetch the latest Restate distribution via:
 ```bash
 docker pull ghcr.io/restatedev/restate-dist:latest
 ```
-
-## Setting up access to Restate npm packages
-
-To [log into GitHub's npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token) you need your username and PAT.
-
-```bash
-npm login --scope=restatedev --auth-type=legacy --registry=https://npm.pkg.github.com
-```
-
-This will ask for your username and password:
-
-```bash
-> Username: USERNAME
-> Password: PAT
-```
-
-After you have logged in, you can fetch the latest npm packages from `@restatedev`.
 
 # Exploring Restate
 
