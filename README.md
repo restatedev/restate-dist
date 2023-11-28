@@ -1,3 +1,5 @@
+This repository **has been archived**. Please visit the [Restate repository](https://github.com/restatedev/restate) instead.
+
 # Welcome to Restate
 
 Restate is a system for easily building resilient applications using **distributed durable RPC & async/await**.
